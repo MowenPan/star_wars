@@ -19,9 +19,7 @@ def check_keydown_events(event,ai_settings, screen, ship, bullets):
         ship.moving_down = True
         # print(event.key)
     elif event.key == pygame.K_SPACE:
-        # 创建一颗子弹并加入到编组bullets中
-        new_bullet = Bullet(ai_settings, screen, ship)
-        bullets.add(new_bullet)
+        fire_bullet(ai_settings, screen, ship, bullets)
 
 
 def check_keyup_events(event, ship):
@@ -65,3 +63,21 @@ def update_screen(ai_settings, screen, ship, bullets):
     # 让最新绘制的屏幕可见
     pygame.display.flip()
 
+
+def update_bullets(bullets):
+    """更新子弹位置并删除已消失的子弹"""
+    # 更新子弹位置
+    bullets.update()
+
+    # 删除已消失的子弹
+    for bullet in bullets:
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
+
+
+def fire_bullet(ai_settings, screen, ship, bullets):
+    """如果没有达到限制就发射子弹"""
+    # 创建新子弹并加入到bullets编组中
+    if len(bullets) < ai_settings.bullet_allowed:
+        new_bullet = Bullet(ai_settings, screen, ship)
+        bullets.add(new_bullet)

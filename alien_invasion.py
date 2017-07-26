@@ -24,12 +24,8 @@ def run_game():
         gf.check_events(ai_settings, screen, ship, bullets)
 
         ship.update()
-        bullets.update()
-        # 删除屏幕外的子弹
-        for bullet in bullets:
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-        # print(len(bullets))
+
+        gf.update_bullets(bullets)
 
         # 每次循环都重新绘制屏幕
         gf.update_screen(ai_settings, screen, ship, bullets)
