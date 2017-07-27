@@ -24,3 +24,23 @@ class Settings():
         self.fleet_drop_speed = 10
         # fleet_direction of 1 represents right, -1 represents left.
         self.fleet_direction = 1
+
+        # 加快游戏节奏的速度
+        self.speedup_scale = 1.1
+
+        self.initialize_dynamic_settings()
+
+    def initialize_dynamic_settings(self):
+        """初始化"""
+        self.ship_speed_factor = 1.5
+        self.bullet_speed_factor = 3
+        self.alien_speed_factor = 1
+
+        # fleet_direction为1表示向右，-1表示向左
+        self.fleet_direction = 1
+
+    def increase_speed(self):
+        """提高速度设置"""
+        self.ship_speed_factor *= self.speedup_scale
+        self.bullet_speed_factor *= self.speedup_scale
+        self.alien_speed_factor *= self.speedup_scale
