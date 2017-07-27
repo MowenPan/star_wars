@@ -1,24 +1,26 @@
-class Settings:
-    """存储游戏所有设置"""
+class Settings():
+    """A class to store all settings for Alien Invasion."""
+
     def __init__(self):
-        """初始化游戏设置"""
-        # 屏幕设置
+        """Initialize the game's settings."""
+        # Screen settings.
         self.screen_width = 1200
         self.screen_height = 800
         self.bg_color = (230, 230, 230)
 
-        # 设置飞船的速度
+        # Ship settings.
         self.ship_speed_factor = 1.5
+        self.ship_limit = 3
 
-        # 设置子弹的属性
+        # Bullet settings.
         self.bullet_speed_factor = 3
         self.bullet_width = 3
         self.bullet_height = 15
-        self.bullet_color = (60, 60, 60)
-        self.bullet_allowed = 6
+        self.bullet_color = 60, 60, 60
+        self.bullets_allowed = 3
 
-        # 设置外星人的属性
+        # Alien settings.
         self.alien_speed_factor = 1
         self.fleet_drop_speed = 10
-        # fleet_direction为1表示向右移动，-1表示向左移动
-        self.fleet_directions = 1
+        # fleet_direction of 1 represents right, -1 represents left.
+        self.fleet_direction = 1
